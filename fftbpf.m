@@ -1,4 +1,4 @@
-function [sigr] = fftbpf(sig, Fs, L, w1, w2)
+function [p, sigr] = fftbpf(sig, Fs, L, w1, w2)
     fv = fft(sig);
     ffilt = zeros(L,1);
     for i = [floor(w1*L/Fs)+1:floor(w2*L/Fs)+1]
@@ -9,7 +9,7 @@ function [sigr] = fftbpf(sig, Fs, L, w1, w2)
         ffilt(i) = 1;
     end
 
-    fv = fv.*ffilt;
-    v = ifft(fv);
+    v = ifft(fv.*ffilt);
     sigr = v;
+    p = ifft(fv.*(1-ffilt));
 end
