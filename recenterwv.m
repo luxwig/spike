@@ -1,6 +1,4 @@
 function [ result ] = recenterwv(c, s)
-%RECENTERWV Summary of this function goes here
-%   Detailed explanation goes here
     result = [];
     upper = c(1)+16;
     lower = 1;

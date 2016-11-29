@@ -1,6 +1,4 @@
 function [ seg ] = segment(x)
-%SEG Summary of this function goes here
-%   Detailed explanation goes here
     n = 200;
     r = [];
     for i = [n+1:n/2:max(size(x))]
@@ -15,7 +13,6 @@ function [ seg ] = segment(x)
     mask = ~excludedata((r), t ,'domain' , domain);
     r = r(mask);
     t = t(mask);
-    %plot(t,r);
     
     mask = [false];
     r = smooth(smooth(r,'rlowess'));
@@ -43,16 +40,6 @@ function [ seg ] = segment(x)
     a = a(mask);
     b = b(mask);
     
-    %{
-    plot(t,r);
-    hold on;
-    scatter(b,a);
-    plot(t,pp*10)
-    for i = [1:max(size(a))]
-        line([(b(i)) (b(i))],ylim)
-    end
-    hold off
-    %}
     seg = b;
 end
 
